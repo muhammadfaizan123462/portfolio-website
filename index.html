@@ -13,7 +13,6 @@
     <style>
       :root{
         --bg:#f5efe4;
-        --bg-deep:#ece1cd;
         --surface:#fffcf5;
         --surface-2:#f6edda;
         --surface-3:#eee1c8;
@@ -25,6 +24,11 @@
         --green:#4f7a45;
         --green-dim:rgba(79,122,69,.12);
         --amber:#a97a24;
+        --viz:#1f8fa3;
+        --viz-bright:#35b6cc;
+        --viz-pale:#7fd8e6;
+        --viz-dark:#0f2430;
+        --viz-glow:#ffb454;
         --line:rgba(38,35,30,.16);
         --line-soft:rgba(38,35,30,.09);
         --font-display:"Source Serif 4",Georgia,serif;
@@ -78,7 +82,7 @@
       /* ---------- nav ---------- */
       header.nav{
         position:fixed;top:0;left:0;right:0;z-index:50;
-        background:linear-gradient(180deg,rgba(245,239,228,.95),rgba(245,239,228,.85));
+        background:rgba(245,239,228,.92);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
         border-bottom:1px solid var(--line-soft);
       }
@@ -111,7 +115,7 @@
       }
 
       /* ---------- hero ---------- */
-      .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 70px;overflow:hidden;background:radial-gradient(1100px 620px at 78% 38%,#efdfc2 0%,var(--bg) 62%)}
+      .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 70px;overflow:hidden;background:var(--bg)}
       #hero-canvas{position:absolute;inset:0;width:100%;height:100%}
       .hero-grid-bg{
         position:absolute;inset:0;pointer-events:none;opacity:.5;
@@ -245,7 +249,7 @@
       @keyframes flowdash{to{stroke-dashoffset:-22}}
 
       /* ---------- deep learning ---------- */
-      #deeplearning{background:linear-gradient(180deg,var(--bg) 0%,#efe3cb 50%,var(--bg) 100%)}
+      #deeplearning{background:var(--bg)}
       .dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
       @media (max-width:900px){ .dl-grid{grid-template-columns:1fr} }
       .dl-card{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:26px;display:flex;flex-direction:column}
@@ -262,7 +266,7 @@
       .recon-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px;vertical-align:-1px}
 
       /* ---------- skills city ---------- */
-      #city{background:var(--bg-deep)}
+      #city{background:var(--bg)}
       .city-stage{
         position:relative;border:1px solid var(--line);border-radius:6px;overflow:hidden;
         background:radial-gradient(900px 480px at 50% 0%,#2b2118 0%,#171310 72%);
@@ -316,7 +320,7 @@
       @media (max-width:860px){ .steps{grid-template-columns:1fr} }
       .step{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line-soft)}
       .step .n{
-        font-family:var(--font-mono);font-size:13px;color:var(--accent);border:1px solid rgba(101,185,216,.4);
+        font-family:var(--font-mono);font-size:13px;color:var(--accent);border:1px solid rgba(178,89,44,.45);
         width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;margin-top:2px;
       }
       .step h3{font-family:var(--font-display);font-size:19px;margin:0 0 5px;font-weight:600}
@@ -326,8 +330,7 @@
       /* ---------- contact / footer ---------- */
       #contact{padding-bottom:40px}
       .contact-card{
-        border:1px solid var(--line);border-radius:6px;background:
-        radial-gradient(700px 300px at 85% 0%,rgba(178,89,44,.14),transparent 60%),var(--surface);
+        border:1px solid var(--line);border-radius:6px;background:var(--surface);
         padding:44px 38px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;justify-content:space-between;
       }
       @media (max-width:640px){ .contact-card{padding:30px 22px} }
@@ -351,10 +354,57 @@
       .hero-photo{margin-top:34px;max-width:640px}
       .hero-photo img{width:100%;height:270px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
       .hero-photo figcaption{font-size:14px;color:var(--muted);margin-top:9px}
-      .wide-photo{margin:0 0 34px}
-      .wide-photo img{width:100%;height:320px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
-      .wide-photo figcaption{font-size:14px;color:var(--muted);margin-top:9px}
-      @media (max-width:640px){ .hero-photo img{height:210px} .wide-photo img{height:220px} }
+      @media (max-width:640px){ .hero-photo img{height:210px} }
+
+      /* ---------- visuals: one distinct colour family ----------
+         The page itself keeps a single warm sandstone colour from top to
+         bottom. Every visual — the diagrams, the API console and both 3D
+         scenes — speaks a different language instead: deep petrol, cyan
+         and amber, so the artwork stands apart from the page around it. */
+      .blueprint{background:var(--viz-dark);border-color:#08161d}
+      .blueprint .annot{color:#b9cdd4}
+      .blueprint .annot b{color:var(--viz-glow)}
+      .blueprint figcaption{color:#b9cdd4}
+      .blueprint figcaption b{color:var(--viz-glow)}
+      .blueprint svg [stroke="#b2592c"]{stroke:#35b6cc}
+      .blueprint svg [fill="#b2592c"]{fill:#35b6cc}
+      .blueprint svg [fill="rgba(178,89,44,.07)"]{fill:rgba(53,182,204,.10)}
+      .blueprint svg [fill="#26231e"]{fill:#e8f2f4}
+      .blueprint svg [fill="#7d7263"]{fill:#9db8c0}
+      .blueprint svg [stroke="#4f7a45"]{stroke:#ffb454}
+      .blueprint svg [fill="#4f7a45"]{fill:#ffb454}
+      .blueprint svg [fill="rgba(79,122,69,.09)"]{fill:rgba(255,180,84,.13)}
+      .dl-svg [stroke="rgba(178,89,44,.35)"]{stroke:rgba(31,143,163,.45)}
+      .dl-svg [stroke="#b2592c"]{stroke:#1f8fa3}
+      .dl-svg [stroke="#4f7a45"]{stroke:#d98a1f}
+      .dl-svg [fill="#b2592c"]{fill:#1f8fa3}
+      .dl-svg [fill="#4f7a45"]{fill:#d98a1f}
+      .recon-bars .bar.in{background:var(--viz-bright)}
+      .recon-bars .bar.out{background:var(--viz-glow)}
+      .ae-visual{background:var(--viz-dark);border-color:#08161d}
+      .ae-visual .ae-cap{color:#b9cdd4}
+      .ae-visual .ae-cap b{color:var(--viz-glow)}
+      .ae-visual svg [fill="#65b9d8"]{fill:#35b6cc}
+      .ae-visual svg [fill="rgba(101,185,216,.75)"]{fill:rgba(53,182,204,.85)}
+      .ae-visual svg [stroke="rgba(101,185,216,.35)"]{stroke:rgba(53,182,204,.4)}
+      .ae-visual svg [fill="#e3b34e"]{fill:#ffb454}
+      .ae-visual svg [fill="#a6b89d"]{fill:#7fd8e6}
+      .ae-visual svg [stroke="#a6b89d"]{stroke:#7fd8e6}
+      .ae-visual svg [fill="rgba(166,184,157,.8)"]{fill:rgba(127,216,230,.8)}
+      .ae-visual svg [stroke="rgba(166,184,157,.35)"]{stroke:rgba(127,216,230,.35)}
+      .api-out{background:var(--viz-dark);color:#d7e6ea}
+      .api-out .g{color:#7fd8e6}
+      .api-out .b{color:#ffb454}
+      .api-out .a{color:#ff9d6e}
+      .city-stage{background:radial-gradient(900px 480px at 50% 0%,#1b3a49 0%,var(--viz-dark) 74%)}
+      .city-hud{color:#b9cdd4}
+      .city-hud b{color:#ffb454}
+      .city-hud .ok{color:#7fd8e6}
+      .city-hint{color:#b9cdd4}
+      .hero-fallback-svg [stroke="#b2592c"]{stroke:#1f8fa3}
+      .hero-fallback-svg [fill="#d08348"]{fill:#35b6cc}
+      .hero-fallback-svg [fill="#4f7a45"]{fill:#ffb454}
+      .hero-fallback-svg [stroke="#4f7a45"]{stroke:#ffb454}
 
       /* hero entrance (runs on load, above the fold only) */
       @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -684,7 +734,7 @@ and show you exactly what it answers.</div>
               <p class="annot">Picture 2 · <b>What the model sees vs. what it rebuilds</b></p>
               <h3>How the autoencoder "sees"</h3>
               <div class="recon-bars" id="recon-bars" aria-hidden="true"></div>
-              <div class="recon-legend"><span><i style="background:var(--accent)"></i>Original signal</span><span><i style="background:var(--green)"></i>Network's reconstruction</span></div>
+              <div class="recon-legend"><span><i style="background:#35b6cc"></i>Original signal</span><span><i style="background:#ffb454"></i>Network's reconstruction</span></div>
               <p>Paired bars, one per measurement. Where the two colours agree, the data is normal — the network has seen this shape before. Where they split apart, the error spikes, and that spike is the anomaly alarm from Project 2 above.</p>
               <p style="margin-top:12px"><span class="annot">Where I am with it: <span class="ok">still learning, still training</span> · the code is public on GitHub</span></p>
             </div>
@@ -901,17 +951,17 @@ and show you exactly what it answers.</div>
 
         var wire = new THREE.LineSegments(
           new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(2.05, 1)),
-          new THREE.LineBasicMaterial({color:0xb2592c, transparent:true, opacity:0.5})
+          new THREE.LineBasicMaterial({color:0x1f8fa3, transparent:true, opacity:0.55})
         );
         core.add(wire);
         var inner = new THREE.Mesh(
           new THREE.IcosahedronGeometry(1.15, 1),
-          new THREE.MeshBasicMaterial({color:0xb2592c, wireframe:true, transparent:true, opacity:0.28})
+          new THREE.MeshBasicMaterial({color:0x35b6cc, wireframe:true, transparent:true, opacity:0.3})
         );
         core.add(inner);
         var heart = new THREE.Mesh(
           new THREE.SphereGeometry(0.34, 20, 20),
-          new THREE.MeshBasicMaterial({color:0x4f7a45})
+          new THREE.MeshBasicMaterial({color:0xffb454})
         );
         core.add(heart);
 
@@ -925,14 +975,14 @@ and show you exactly what it answers.</div>
         }
         var pgeo = new THREE.BufferGeometry();
         pgeo.setAttribute("position", new THREE.BufferAttribute(pos,3));
-        core.add(new THREE.Points(pgeo, new THREE.PointsMaterial({color:0xd08348, size:0.085, transparent:true, opacity:0.95})));
+        core.add(new THREE.Points(pgeo, new THREE.PointsMaterial({color:0x35b6cc, size:0.085, transparent:true, opacity:0.95})));
         var linePos = [];
         for (var a=0;a<N;a++) for (var b=a+1;b<N;b++){
           if (pts[a].distanceTo(pts[b]) < 1.55){ linePos.push(pts[a].x,pts[a].y,pts[a].z, pts[b].x,pts[b].y,pts[b].z); }
         }
         var lgeo = new THREE.BufferGeometry();
         lgeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(linePos),3));
-        core.add(new THREE.LineSegments(lgeo, new THREE.LineBasicMaterial({color:0xb2592c, transparent:true, opacity:0.16})));
+        core.add(new THREE.LineSegments(lgeo, new THREE.LineBasicMaterial({color:0x1f8fa3, transparent:true, opacity:0.18})));
 
         // ambient dust
         var DN = 260, dpos = new Float32Array(DN*3);
@@ -1013,34 +1063,34 @@ and show you exactly what it answers.</div>
         }
         renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
         var scene = new THREE.Scene();
-        scene.fog = new THREE.Fog(0x0a0e12, 26, 52);
+        scene.fog = new THREE.Fog(0x0f2430, 26, 52);
         var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 120);
         camera.position.set(13.5, 10.5, 13.5);
         camera.lookAt(0, 1.6, 0);
 
         scene.add(new THREE.AmbientLight(0xbfd4e0, 0.55));
         var key = new THREE.DirectionalLight(0xffffff, 0.85); key.position.set(8, 14, 6); scene.add(key);
-        var rim = new THREE.DirectionalLight(0xe0a370, 0.5); rim.position.set(-10, 6, -8); scene.add(rim);
+        var rim = new THREE.DirectionalLight(0xffb454, 0.5); rim.position.set(-10, 6, -8); scene.add(rim);
 
         var city = new THREE.Group(); scene.add(city);
 
         // ground + grid
-        var ground = new THREE.Mesh(new THREE.CircleGeometry(15.5, 48), new THREE.MeshStandardMaterial({color:0x141c23, roughness:1}));
+        var ground = new THREE.Mesh(new THREE.CircleGeometry(15.5, 48), new THREE.MeshStandardMaterial({color:0x122b38, roughness:1}));
         ground.rotation.x = -Math.PI/2; city.add(ground);
-        var grid = new THREE.PolarGridHelper(15.5, 12, 7, 48, 0x2b3b47, 0x22303b);
+        var grid = new THREE.PolarGridHelper(15.5, 12, 7, 48, 0x2e5a6b, 0x1d4252);
         grid.position.y = 0.02; city.add(grid);
-        var plaza = new THREE.Mesh(new THREE.CircleGeometry(2.7, 40), new THREE.MeshStandardMaterial({color:0x1d2933, roughness:0.9}));
+        var plaza = new THREE.Mesh(new THREE.CircleGeometry(2.7, 40), new THREE.MeshStandardMaterial({color:0x1a3542, roughness:0.9}));
         plaza.rotation.x = -Math.PI/2; plaza.position.y = 0.03; city.add(plaza);
-        var ring = new THREE.Mesh(new THREE.TorusGeometry(2.7, 0.045, 8, 60), new THREE.MeshBasicMaterial({color:0xe0a370}));
+        var ring = new THREE.Mesh(new THREE.TorusGeometry(2.7, 0.045, 8, 60), new THREE.MeshBasicMaterial({color:0xffb454}));
         ring.rotation.x = Math.PI/2; ring.position.y = 0.05; city.add(ring);
 
         // label texture
         function makeLabel(skill, idx){
           var c = document.createElement("canvas"); c.width = 256; c.height = 512;
           var g = c.getContext("2d");
-          g.fillStyle = "#232f39"; g.fillRect(0,0,256,512);
-          g.fillStyle = "#1a232c"; g.fillRect(0,0,256,118);
-          g.fillStyle = "#e0a370"; g.fillRect(0,110,256,4);
+          g.fillStyle = "#16303c"; g.fillRect(0,0,256,512);
+          g.fillStyle = "#0f2430"; g.fillRect(0,0,256,118);
+          g.fillStyle = "#ffb454"; g.fillRect(0,110,256,4);
           g.fillStyle = "#dce3e8"; g.font = "600 30px Georgia, serif"; g.textAlign="center";
           var words = skill.name.toUpperCase().split(" ");
           if (words.length > 1 && skill.name.length > 11){
@@ -1066,7 +1116,7 @@ and show you exactly what it answers.</div>
           var x = Math.cos(ang)*R, z = Math.sin(ang)*R;
           var labelTex = makeLabel(skill, i);
           var sideMat = new THREE.MeshStandardMaterial({map:labelTex, roughness:0.85});
-          var capMat = new THREE.MeshStandardMaterial({color:0x2c3944, roughness:0.9});
+          var capMat = new THREE.MeshStandardMaterial({color:0x1d4252, roughness:0.9});
           var geo = new THREE.BoxGeometry(2.5, skill.h, 2.5);
           var mesh = new THREE.Mesh(geo, [sideMat, sideMat, capMat, capMat, sideMat, sideMat]);
           mesh.position.set(x, skill.h/2, z);
@@ -1076,7 +1126,7 @@ and show you exactly what it answers.</div>
           // roof antenna + beacon
           var ant = new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.035,1.1), new THREE.MeshBasicMaterial({color:0x8496a3}));
           ant.position.set(x, skill.h+0.55, z); city.add(ant);
-          var beacon = new THREE.Mesh(new THREE.SphereGeometry(0.11, 10, 10), new THREE.MeshBasicMaterial({color:0xe0a370}));
+          var beacon = new THREE.Mesh(new THREE.SphereGeometry(0.11, 10, 10), new THREE.MeshBasicMaterial({color:0xffb454}));
           beacon.position.set(x, skill.h+1.12, z); city.add(beacon);
           towers.push({mesh:mesh, beacon:beacon, skill:skill});
         });
@@ -1119,7 +1169,7 @@ and show you exactly what it answers.</div>
           selected = i;
           towers.forEach(function(t, j){
             t.mesh.userData.target = (j===i) ? 1.22 : 1;
-            t.mesh.material.forEach(function(m){ if (m.emissive){ m.emissive.setHex(j===i ? 0x14303f : 0x000000); } });
+            t.mesh.material.forEach(function(m){ if (m.emissive){ m.emissive.setHex(j===i ? 0x0e4a5a : 0x000000); } });
           });
           var s = SKILLS[i];
           crName.textContent = s.name; crDesc.textContent = s.desc; crTag.textContent = s.tag; crCode.textContent = s.code+" · Selected";
@@ -1175,7 +1225,7 @@ and show you exactly what it answers.</div>
             var goal = m.userData.target;
             m.scale.y += (goal-cur)*0.09;
             m.position.y = (tw.skill.h * m.scale.y)/2;
-            tw.beacon.material.color.setHex(j===selected ? 0xffc46e : 0xe0a370);
+            tw.beacon.material.color.setHex(j===selected ? 0xffc46e : 0xffb454);
             var s = (j===selected) ? 1 + Math.sin(t*3)*0.25 : 1;
             tw.beacon.scale.setScalar(s);
           });
